@@ -24,23 +24,14 @@ jobs:
               repo: context.repo.repo,
               body: 'The issue is now resolved.'
             })
-      - name: Congratulate first PR
+      - name: Congratulate on PR
         if: github.event_name == 'pull_request' && github.event.action == 'opened'
         uses: actions/github-script@v7
         with:
           script: |
-            const { data: pullRequests } = await github.rest.pulls.list({
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: 'all',
-              creator: context.payload.pull_request.user.login
-            });
-            
-            if (pullRequests.length === 1) {
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: 'Congratulations on opening your first pull request!'
-              })
-            }
+              body: 'Congratulations on opening your first pull request!'
+            })
