@@ -1,0 +1,7 @@
+rules:
+  - name: Require 2 reviewers
+    condition:
+      type: pull_request
+    action:
+      type: require_reviews
+      count: 2
