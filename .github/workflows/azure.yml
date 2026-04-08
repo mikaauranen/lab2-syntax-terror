@@ -17,8 +17,8 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t LAB44.azurecr.io/syntax-terror
-        docker push LAB44.azurecr.io/syntax-terror   
+        docker build . -t lab44.azurecr.io/syntax-terror
+        docker push lab44.azurecr.io/syntax-terror   
 
     - uses: azure/webapps-deploy@v2
       with:
