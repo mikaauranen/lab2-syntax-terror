@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
-    - uses: azure/docker-login@v1
+    - name: actionin checkoutti
+      uses: actions/checkout@v6
+    - name: kirjautuminen
+      uses: azure/docker-login@v2
       with:
         login-server: lab44.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
